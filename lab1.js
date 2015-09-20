@@ -58,6 +58,8 @@ assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.'
 */
 
 //your code goes here
+assert('cheetah' === 'cheetah', 'cheetah equals cheetah - this will pass');
+assert('cheetah' === 'lion', 'a cheetah is not a lion and the strings are not equal to each other');
 
 /* ========================================================================
 ----------------- Meerkats (20 points total)-------------------------------
@@ -78,11 +80,27 @@ var sentence2 = 'Come over here so you can scratch my belly.';
 // 'chirp' (10 points)
 
 // your code goes here
+sentence1 = sentence1.split(' ');
+
+for (var i = 0; i < sentence1.length; i++) {
+  sentence1[i] = 'chirp';
+}
+
+sentence1 = sentence1.join([' ']) + '.';
 
 // TODO: part #2: use a while or do-while loop to replace the words in sentence 2
 // with 'chirp' (10 points)
 
 // your code goes here
+sentence2 = sentence2.split(' ');
+var i = 0;
+
+while (i < 9) {
+  sentence2[i] = 'chirp';
+  i++;
+}
+
+sentence2 = sentence2.join([' ']) + '.';
 
 // Leave these assertions as-is! If they pass, your code works.
 assert(sentence1 === 'chirp chirp chirp.', 'sentence 1 should have 3 chirps');
@@ -105,6 +123,7 @@ var nextAnimal;
 // Assign one of your favorite animals to nextAnimal using Math.random() to pick
 
 // your code goes here
+nextAnimal = favoriteAnimals[Math.floor(Math.random() * (3 - 0 + 1)) + 0];
 
 assert(nextAnimal, 'assign something to nextAnimal');
 
@@ -134,6 +153,23 @@ var tooHungryDay;
 */
 
 // your code goes here
+var sumOfMeals = 0;
+
+for (var i = 0; i < mealsPerDay.length; i++) {
+
+  var numbOfDays = i + 1;
+  sumOfMeals += mealsPerDay[i];
+  var average = sumOfMeals / numbOfDays;
+
+  if (average < 4) {
+    tooHungryDay = numbOfDays;
+    console.log('The lion average meals a day is ' + average + ' . It only took ' + tooHungryDay + ' days.');
+    break;
+  }
+
+  console.log('Day ' + numbOfDays + ' the lion recieved an average of ' + average + ' meals.');
+
+}
 
 assert(tooHungryDay, 'remember to assign the answer to tooHungryDay');
 assert(tooHungryDay < 10, 'the lion is too hungry before the end of the array');
